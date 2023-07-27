@@ -1,0 +1,126 @@
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+.searchBar input,
+.searchBtn,
+.searchBtn:before,
+.searchBtn:after {
+  transition: all 0.25s ease-out;
+}
+
+.searchBar input:invalid:not(:focus),
+.searchBtn {
+  cursor: pointer;
+}
+
+.searchBar,
+.searchBar input:focus,
+.searchBar input:valid {
+  width: 100%;
+}
+
+.searchBar input:focus,
+.searchBar input:not(:focus) + .searchBtn:focus {
+  outline: transparent;
+}
+
+.searchBar {
+  max-width: 320px;
+  display: flex;
+  margin-bottom: 95px;
+}
+
+.searchBar input {
+  background: transparent;
+  padding: 0.75em;
+  transform: translate(0.5em, 0.5em) scale(0.5);
+  transform-origin: 100% 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.searchBar input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+.searchBar input:focus,
+.searchBar input:valid {
+  transform: scale(1);
+}
+
+.searchBtn {
+  background: #171717;
+  padding: 0.75em;
+  position: relative;
+  transform: translate(0.25em, 0.25em) rotate(45deg) scale(0.25, 0.125);
+  transform-origin: 0 50%;
+}
+
+.searchBtn:before,
+.searchBtn:after {
+  content: "";
+  display: block;
+  opacity: 0;
+}
+
+.searchBtn:before {
+  top: 0.75em;
+  left: 0.75em;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.searchBtn:after {
+  top: 51%;
+  left: 51%;
+  width: 0.75em;
+  height: 0.25em;
+  transform: translate(0.2em, 0) rotate(45deg);
+  transform-origin: 0 50%;
+}
+
+.searchBtn span {
+  display: inline-block;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+/* Active */
+.searchBar input:focus + .searchBtn,
+.searchBar input:valid + .searchBtn {
+  background: #646fbb;
+  transform: scale(1);
+}
+
+.searchBar input:focus + .searchBtn:before,
+.searchBar input:focus + .searchBtn:after,
+.searchBar input:valid + .searchBtn:before,
+.searchBar input:valid + .searchBtn:after {
+  opacity: 1;
+}
+
+.searchBar input:focus + .searchBtn:hover,
+.searchBar input:valid + .searchBtn:hover,
+.searchBar input:valid:not(:focus) + .searchBtn:focus {
+  background: #557ab4;
+}
+
+.searchBar input:focus + .searchBtn:active,
+.searchBar input:valid + .searchBtn:active {
+  transform: translateY(5px);
+}
+
+.searchBar input {
+}
+
+.searchBar input:focus,
+.searchBar input:valid {
+  background: #19191f;
+}
