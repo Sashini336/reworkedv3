@@ -64,6 +64,7 @@ export default function Home({ localData }) {
               return (
                 <Ad
                   key={ads.id}
+                  id={ads.id}
                   title={ads.title}
                   image={ads.image}
                   path={ads.path}

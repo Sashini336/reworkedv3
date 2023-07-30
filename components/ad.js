@@ -9,12 +9,13 @@ export default function Ad({
   fuel,
   city,
   year,
+  id,
 }) {
   return (
     <div className="smallAd">
       <img id="image" src={image} />
       <div className="infoSmallAd">
-        <Link class="link" id="link" target="_blank" href={""}>
+        <Link class="link" id="link" href={`/${id}`}>
           {title}
         </Link>
         <p className="priceSmallAd">{price}</p>

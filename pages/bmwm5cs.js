@@ -109,7 +109,7 @@ export default function CarAd(props) {
               </Swiper>
             </div>
             <div className="desc">
-              {/* <p id="name">{data.title}</p> */}
+              <p id="name">{data.title}</p>
               <p id="price">{data.price}</p>
               <div className="singleAdContainer">
                 <ul className="specsSingleAd">
