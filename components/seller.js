@@ -8,7 +8,7 @@ export default function Seller({ brand, phone, region, city, logo, more }) {
           {region}, {city}
         </p>
         <a id="sellerAds" href={more}>
-          View all our cars!
+          Вижте всичките ни оферти !
         </a>
         <p id="sellerPhone">{phone}</p>
       </div>

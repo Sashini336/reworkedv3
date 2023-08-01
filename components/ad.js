@@ -15,7 +15,7 @@ export default function Ad({
     <div className="smallAd">
       <img id="image" src={image} />
       <div className="infoSmallAd">
-        <Link class="link" id="link" href={`/${id}`}>
+        <Link className="link" id="link" href={`/${id}`}>
           {title}
         </Link>
         <p className="priceSmallAd">{price}</p>

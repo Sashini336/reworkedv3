@@ -88,7 +88,7 @@ export default function CarAd(props) {
               );
             })}
             <div className="sellerInfo"></div>
-            <div class="swiperContainer">
+            <div className="swiperContainer">
               <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 className="external-buttons"

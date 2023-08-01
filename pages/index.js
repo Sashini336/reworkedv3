@@ -3,21 +3,21 @@ import Ad from "../components/ad";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import React, { useState } from "react";
-import { getLocalData } from "../lib/localdata";
+// import { getLocalData } from "../lib/localdata";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
 const adsPerPage = 12; // Change this value as per your preference
 
 export async function getStaticProps() {
-  const localData = await getLocalData();
-
+  const res = await fetch("http://127.0.0.1:8000/cars/?format=json");
+  const data = await res.json();
   return {
-    props: { localData },
+    props: { data },
   };
 }
 
-export default function Home({ localData }) {
+export default function Home({ data }) {
   const [searchField, setSearchField] = useState("");
   const [displayedAds, setDisplayedAds] = useState(adsPerPage);
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ export default function Home({ localData }) {
     setDisplayedAds((prevDisplayedAds) => prevDisplayedAds + adsPerPage);
   };
 
-  const filteredCars = localData.filter((car) => {
+  const filteredCars = data.filter((car) => {
     return car.title.toLowerCase().startsWith(searchField.toLowerCase());
   });
 

@@ -1,13 +1,12 @@
-import { getLocalData } from "../lib/localdata";
 import Head from "../components/header";
 import Seller from "../components/seller";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export async function getStaticProps({ params }) {
-  const localData = await getLocalData();
-  const filteredData = localData.filter((ads) => Number(params.id) === ads.id);
-  const data = filteredData[0];
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/cars/${params.id}/`
+  ).then(({ data }) => data);
 
   return {
     props: { data },
@@ -15,15 +14,17 @@ export async function getStaticProps({ params }) {
 }
 
 export const getStaticPaths = async () => {
-  // Fetch the necessary data to determine the paths
-  const localData = await getLocalData();
+  const data = await fetch("http://127.0.0.1:8000/cars/").then(
+    ({ data }) => data
+  );
+  // const data = res.json();
 
-  // Create an array of objects with `params` containing the dynamic route parameter `id`
-  const paths = localData.map((ads) => ({
-    params: { id: ads.id.toString() },
-  }));
+  const paths = data
+    ? data.map((ads) => ({
+        data: { id: ads.id.toString() },
+      }))
+    : [];
 
-  // Return the object with `paths` and `fallback` value
   return {
     paths,
     fallback: false,
@@ -31,8 +32,7 @@ export const getStaticPaths = async () => {
 };
 
 function SingleCarAds({ data }) {
-  const images = [""];
-
+  console.log(data);
   const seller = [
     {
       logo: "https://cdn2.focus.bg/mobile/images/houseslogos/h12326225621846761.pic?1689762742",
@@ -46,23 +46,22 @@ function SingleCarAds({ data }) {
   return (
     <div>
       <main>
+        {seller.map((seller) => {
+          return (
+            <Seller
+              logo={seller.logo}
+              brand={seller.brand}
+              region={seller.region}
+              city={seller.city}
+              more={seller.more}
+              phone={seller.phone}
+            ></Seller>
+          );
+        })}
         <div className="wholePageContainer">
           <h3 id="singleAdTitle">{data.title}</h3>
           <div className="adContainer">
-            {seller.map((seller) => {
-              return (
-                <Seller
-                  logo={seller.logo}
-                  brand={seller.brand}
-                  region={seller.region}
-                  city={seller.city}
-                  more={seller.more}
-                  phone={seller.phone}
-                ></Seller>
-              );
-            })}
-            <div className="sellerInfo"></div>
-            <div class="swiperContainer">
+            <div className="swiperContainer">
               <Swiper
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 className="external-buttons"
