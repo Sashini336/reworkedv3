@@ -10,7 +10,7 @@ import Link from "next/link";
 const adsPerPage = 12; // Change this value as per your preference
 
 export async function getStaticProps() {
-  const res = await fetch("http://127.0.0.1:8000/cars/?format=json");
+  const res = await fetch("http://127.0.0.1:8000/car/");
   const data = await res.json();
   return {
     props: { data },
@@ -66,7 +66,7 @@ export default function Home({ data }) {
                   key={ads.id}
                   id={ads.id}
                   title={ads.title}
-                  image={ads.image}
+                  image={ads.image.image}
                   path={ads.path}
                   price={ads.price}
                   millage={ads.millage}

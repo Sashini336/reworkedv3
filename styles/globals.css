@@ -152,6 +152,35 @@ img#imagesSingleAd {
   border-radius: 2px;
 }
 
+/* Scaling */
+@media  screen and (max-width: 600px) {
+  img#imagesSingleAd{
+    max-width: 450px;
+  }
+}
+
+@media  screen and (min-width: 600px) {
+  img#imagesSingleAd{
+    max-width: 550px;
+  }
+}
+@media screen and (min-width: 768px) {
+  img#imagesSingleAd{
+    max-width: 700px;
+  }
+}
+@media screen and (min-width: 992px) {
+  img#imagesSingleAd{
+    max-width: 700px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  img#imagesSingleAd{
+    max-width: 700px;
+  }
+}
+/*  */
+
 .swiperContainer {
   max-width: 700px;
 }
