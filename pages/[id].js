@@ -29,6 +29,7 @@ export const getStaticPaths = async () => {
 };
 
 function SingleCarAds({ data }) {
+  console.log(data.images);
   const seller = [
     {
       logo: "https://cdn2.focus.bg/mobile/images/houseslogos/h12326225621846761.pic?1689762742",
@@ -70,7 +71,11 @@ function SingleCarAds({ data }) {
                 initialSlide={1}
                 loop
               >
-                <img alt="img" id="imagesSingleAd" src={data.image.image} />
+                {data.images.map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <img alt="img" id="imagesSingleAd" src={image.image} />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </div>

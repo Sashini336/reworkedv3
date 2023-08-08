@@ -66,7 +66,7 @@ export default function Home({ data }) {
                   key={ads.id}
                   id={ads.id}
                   title={ads.title}
-                  image={ads.image.image}
+                  image={ads.main_image.image}
                   path={ads.path}
                   price={ads.price}
                   millage={ads.millage}
